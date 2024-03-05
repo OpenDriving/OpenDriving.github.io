@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>LiDAR-CS Dataset: LiDAR Point Cloud Dataset with Cross-Sensors
+for 3D Object Detection</title>
+
+    <meta name="description" content="LiDAR-CS Dataset: LiDAR Point Cloud Dataset with Cross-Sensors
+for 3D Object Detection">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+    <!--   <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                LiDAR-CS Dataset: LiDAR Point Cloud Dataset with Cross-Sensors
+for 3D Object Detection<br>
+                <small>
+                    IEEE International Conference on Robotics and Automation (ICRA), 2024
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=jueyHcIAAAAJ">
+                            Jin Fang<sup>1,2</sup>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=pfBeKioAAAAJ&hl=en">
+                            Dingfu Zhou<sup>2</sup>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Jingjing Zhao<sup>2</sup>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://chenming-wu.github.io">
+                            Chenming Wu<sup>2</sup>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            Chulin Tang<sup>3</sup>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.fst.um.edu.mo/people/czxu/">
+                            Cheng-Zhong Xu<sup>1</sup>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.cs.unc.edu/~zlj/">
+                            Liangjun Zhang<sup>2</sup>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="list-inline">
+                    <li>
+                        <sup>1</sup>University of Macau
+                    </li>
+                    <li>
+                        <sup>2</sup>RAL, Baidu Research
+                    </li>
+                    <li>
+                        <sup>3</sup>University of California, Irvine
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="data/paper.pdf">
+                            <image src="img/paperclip.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="https://youtu.be/eiWXDUSKihQ">
+                            <image src="img/youtube_icon.png" height="60px"><br>
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                    <li>
+                        <a href="https://github.com/lidar-perception/lidar-cs">
+                            <image src="img/github_pad.png" height="60px">
+                                <h4><strong>Dataset&Code</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <iframe style="width: 100%; height:390px; margin-left: auto; margin-right: auto;" src="https://www.youtube.com/embed/eiWXDUSKihQ?si=lq9Qh6sFydiwPuOr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p class="text-justify">
+                    Over the past few years, there has been remarkable progress in research on 3D point clouds and their use in autonomous driving scenarios has become widespread. However, deep learning methods heavily rely on annotated data and often face domain generalization issues. Unlike 2D images whose domains usually pertain to the texture information present in them, the features derived from a 3D point cloud are affected by the distribution of the points. 
+The lack of a 3D domain adaptation benchmark leads to the common practice of training a model on one benchmark (e.g. Waymo) and then assessing it on another dataset (e.g. KITTI). This setting results in two distinct domain gaps: scenarios and sensors, making it difficult to accurately analyze and evaluate the method.
+To tackle this problem, this paper presents <b>LiDAR</b> Dataset with <b>C</b>ross-<b>S</b>ensors (LiDAR-CS Dataset), which contains large-scale annotated LiDAR point cloud under six groups of different sensors but with same corresponding scenarios, captured from hybrid realistic LiDAR simulator. To our knowledge, LiDAR-CS Dataset is the first dataset that addresses the sensor-related gaps in the domain of 3D object detection in real traffic. Furthermore, we evaluate and analyze the performance using various baseline detectors and demonstrated its potential applications.
+                </p>
+                <!-- 
+                <image src="img/teaser.png" class="img-responsive" alt="overview">
+                 -->
+                 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    LiDAR-CS Dataset
+                </h3>
+                <h4>
+                    Pattern-aware LiDAR Simulation
+                </h4>
+                <p> First of all, the real LiDAR points are normalized to a spherical
+                    surface. Due to points missing, statistics information from multiple scans is required to build the LiDAR Ray Pattern. Then, the Ray Pattern vectors are
+                    simultaneously projected and query the depth value from the depth map to generate the simulation point cloud.</p>
+                <image src="img/framework.JPG" style="width: 90%; margin-left: auto; margin-right: auto;"
+                    class="img-responsive" alt="kitti"></image>
+
+                <h4>
+                    Samples
+                </h4>
+                <p>An example of the LiDAR-CS dataset. All the point clouds are generated from the same scenario under different sensor patterns. The points in the
+                    cycle are zoomed in and shown in the white boxes for a better view. The point clouds are colorized by the height of the points</p>
+                <image src="img/samples.jpg" style="width: 100%; margin-left: auto; margin-right: auto;"
+                    class="img-responsive" alt="kitti"></image>
+                <!-- <h4>
+                    NeRF Methods
+                </h4>
+                <p>NeRF++, MipNeRF-360, Instant-NGP</p>
+                <h4>
+                    Depth Methods
+                </h4>
+                <p>MFFNet (completion), BTS (monocular), CFNet and PCWNet (stereo)</p>
+                <h4>
+                    Procedure
+                </h4>
+                <p class="text-justify">
+                    We apply different methods for novel view synthesis on each sequence with the listed depth priors in
+                    two settings: sparse input viewpoints and dense input viewpoints.
+                    We evaluate both novel view synthesis quality and depth estimation quality with corresponding
+                    metrics. We found depth priors are essential for sparse viewpoints.
+                </p> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Experiment Results
+                </h3>
+
+                <p>(a) and (b) are LiDAR point cloud examples collected from different
+                    types of sensors which are from 64-beams and 16-beams LiDAR sensors
+                    respectively. The vehicle has been cropped and zoomed in for detailed
+                    visualization purposes. Sub-figure (c) gives a cross-sensors evaluation of
+                    experimental results where four baseline detectors are trained on VLD 64
+                    LiDAR data and evaluated on five different sensors in the same scenario.
+                    The results show that the domain gaps are obvious across different sensors</p>
+                <image src="img/results.jpg" class="img_responsive" style="width: 100%; margin-left: auto; margin-right: auto;" alt="results"></image>
+
+                
+                <p>Cross evaluation on LiDAR-CS benchmark under five different LiDAR sensor patterns with five baseline detectors. “Ped.” is short for “Pedestrian”</p>
+
+                <image src="img/tab1.png" class="img_responsive" style="width: 100%; margin-left: auto; margin-right: auto;" alt="results"></image>
+
+
+
+
+
+                <!-- <h4>Comparison on a sequence with only RGB inputs (top) and mono depth (bottom)</h4>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                    <source src="img/comparison.mp4" type="video/mp4" />
+                </video>
+                <h4>Comparison of different depth priors</h4>
+                <image src="img/kitti.png" class="img-responsive" alt="kitti"></image>
+                <image src="img/argo.png" class="img-responsive" alt="argo"></image>
+                <br>
+                <h4>Point cloud Visualization</h4>
+                <image src="img/pc.png" class="img-responsive" alt="point cloud"></image>
+                <br> -->
+            </div>
+        </div>
+
+<!-- 
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Findings
+                </h3>
+                <ul style="font-size: 12pt;">
+                    1: Monocular depth is great for sparse view and comes at no cost, it can achieve comparable quality
+                    with ground truth LiDAR depth.
+                </ul>
+                <ul style="font-size: 12pt;">
+                    2. Depth supervision is an option for dense view, which increases the geometry quality of NeRFs.
+                </ul>
+                <ul style="font-size: 12pt;">
+                    3. The denser the depth, the better quality it will bring.
+                </ul>
+                <ul style="font-size: 12pt;">
+                    4. Simple loss function and depth filtering are enough.
+                </ul>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{fang2023lidarcs,
+    title={LiDAR-CS Dataset: LiDAR Point Cloud Dataset with Cross-Sensors for 3D Object Detection},
+    author={Jin Fang and Dingfu Zhou and Jingjing Zhao and Chenming Wu and Chulin Tang and Cheng-Zhong Xu and Liangjun Zhang},
+    booktitle={IEEE International Conference on Robotics and Automation (ICRA)},
+    year={2024}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgement
+                </h3>
+                <p class="text-justify">
+                    The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a> and <a
+                        href="https://bmild.github.io/">Ben Mildenhall</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
